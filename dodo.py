@@ -21,6 +21,7 @@ DOIT_CONFIG = {
 # -----------------------
 
 SCRIPT_NAME = 'pysamloader-gui'
+PACKAGE_NAME = 'pysamloader_gui'
 SCRIPT_VERSION = get_version(root='.', relative_to=__file__)
 GITHUB_PATH = 'chintal/{0}'.format(SCRIPT_NAME)
 
@@ -97,7 +98,7 @@ _installer_path = os.path.join(_base_folder, 'packaging',
                                platform.system().lower(), _installer_name)
 _sdist_name = '{0}-{1}.tar.gz'.format(SCRIPT_NAME, SCRIPT_VERSION)
 _bdist_name = '{0}-{1}-{2}-none-any.whl'.format(SCRIPT_NAME, SCRIPT_VERSION, pytag)
-_egg_info_folder = os.path.join(_base_folder, "{0}.egg-info".format(SCRIPT_NAME))
+_egg_info_folder = os.path.join(_base_folder, "{0}.egg-info".format(PACKAGE_NAME))
 _doc_name = SCRIPT_NAME + '.pdf'
 _doc_path = os.path.join(_base_folder, 'docs', '_build', 'latex', _doc_name)
 
@@ -107,7 +108,7 @@ _doc_path = os.path.join(_base_folder, 'docs', '_build', 'latex', _doc_name)
 
 def _inject_version():
     # Build version file for injection into the binary
-    with open(os.path.join(_base_folder, SCRIPT_NAME, '_version.py'), 'w') as f:
+    with open(os.path.join(_base_folder, PACKAGE_NAME, '_version.py'), 'w') as f:
         f.write('__version__ = "{0}"'.format(SCRIPT_VERSION))
 
 
@@ -125,7 +126,7 @@ def task_setup_build():
             (create_folder, [_work_folder])
         ],
         'targets': [
-            os.path.join(_base_folder, SCRIPT_NAME, '_version.py'),
+            os.path.join(_base_folder, PACKAGE_NAME, '_version.py'),
             _dist_folder,
         ],
         'clean': [_clean_work_folder, clean_targets]
@@ -155,7 +156,6 @@ def _create_binary_package():
         (os.path.join(_binary_dist_folder, _executable_name), _executable_name),
         (os.path.join(_base_folder, 'LICENSE'), 'LICENSE'),
         (_doc_path, _doc_name),
-        (os.path.join(_base_folder, 'pysamloader', 'devices'), 'devices'),
     ]
 
     def _filter_py(tarinfo):
