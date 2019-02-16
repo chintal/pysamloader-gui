@@ -9,7 +9,7 @@ dist/
 .doit.db*
 .eggs/
 env-pysamloader/
-pysamloader/_version.py
+pysamloader_gui/_version.py
 .vs/
 .vscode/
 *__pycache__

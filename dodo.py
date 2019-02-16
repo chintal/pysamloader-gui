@@ -5,6 +5,7 @@ import sys
 import six
 import shutil
 import github
+import appdirs
 import platform
 
 from doit.task import clean_targets
@@ -156,6 +157,9 @@ def _create_binary_package():
         (os.path.join(_binary_dist_folder, _executable_name), _executable_name),
         (os.path.join(_base_folder, 'LICENSE'), 'LICENSE'),
         (_doc_path, _doc_name),
+        (os.path.join(
+            appdirs.user_config_dir('pysamloader', appauthor='Quazar Technologies', roaming=True),
+            'devices'), 'devices'),
     ]
 
     def _filter_py(tarinfo):

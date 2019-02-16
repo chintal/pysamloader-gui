@@ -30,7 +30,23 @@ If you require pre-built binaries, they are available for 64-bit Linux and
 Windows. However, be aware that these binaries are not thoroughly tested, 
 and your mileage may vary based on your specific operating system and machine 
 architecture. You will also have to manually copy the included ``devices`` 
-folder to the correct location. (See the ``pysamloader`` documentation).
+folder to the correct location.
+
+When using binary packages, the included ``devices`` folder contains the
+included device support modules, each of which is a python file with a
+single class of the same name, containing device specific information about
+one device. This folder should be copied into a separate location where you can
+safely add, remove, or modify device configuration as needed. This device
+library is shared with the ``pysamloader`` CLI application, which need not be
+separately installed in order to the the GUI application. The location is
+that provided by ``user_config_dir`` of the python ``appdirs`` package
+for the ``pysamloader`` application, specifically :
+
+    - Linux : ``~/.config/pysamloader``
+    - Windows : ``C:\Users\<username>\AppData\Roaming\Quazar Technologies\pysamloader``
+
+(Also see the ``pysamloader`` documentation).
+
 The current ``pysamloader-gui`` windows .msi installer will create this folder
 and populate it as a part of the install process.
 
