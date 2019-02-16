@@ -2,4 +2,4 @@ include LICENSE
 include README.rst
 include docs/*.rst
 include docs/Makefile
-include pysamloader/assets/*.png
+include pysamloader_gui/assets/*.png
