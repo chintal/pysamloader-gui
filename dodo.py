@@ -98,7 +98,7 @@ _installer_name = "{0}-{1}-{2}{3}".format(SCRIPT_NAME, SCRIPT_VERSION,
 _installer_path = os.path.join(_base_folder, 'packaging', 
                                platform.system().lower(), _installer_name)
 _sdist_name = '{0}-{1}.tar.gz'.format(SCRIPT_NAME, SCRIPT_VERSION)
-_bdist_name = '{0}-{1}-{2}-none-any.whl'.format(SCRIPT_NAME, SCRIPT_VERSION, pytag)
+_bdist_name = '{0}-{1}-{2}-none-any.whl'.format(PACKAGE_NAME, SCRIPT_VERSION, pytag)
 _egg_info_folder = os.path.join(_base_folder, "{0}.egg-info".format(PACKAGE_NAME))
 _doc_name = SCRIPT_NAME + '.pdf'
 _doc_path = os.path.join(_base_folder, 'docs', '_build', 'latex', _doc_name)
