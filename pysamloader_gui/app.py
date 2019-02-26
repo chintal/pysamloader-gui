@@ -377,6 +377,7 @@ class FirmwareLoader(App, DropHandler):
 
     def build(self):
         Window.clearcolor = self._color2
+        self.icon = os.path.join(asset_path, 'icon.png')
         DropHandler.build(self)
         self._root = FloatLayout()
         self._build_content()

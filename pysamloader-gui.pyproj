@@ -31,6 +31,7 @@
     <Content Include="build\pysamloader-gui\xref-pysamloader-gui.html" />
     <Content Include="docs\_build\latex\logo.png" />
     <Content Include="docs\_static\logo.png" />
+    <Content Include="pysamloader-gui.spec" />
     <Content Include="pysamloader_gui.egg-info\dependency_links.txt" />
     <Content Include="pysamloader_gui.egg-info\entry_points.txt" />
     <Content Include="pysamloader_gui.egg-info\requires.txt" />

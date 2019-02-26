@@ -35,6 +35,7 @@ a = Analysis(
         ('pysamloader_gui/assets/sam-ic.png', 'pysamloader_gui/assets'),
         ('pysamloader_gui/assets/verify.png', 'pysamloader_gui/assets'),
         ('pysamloader_gui/assets/write.png', 'pysamloader_gui/assets'),
+		('pysamloader_gui/assets/icon.png', 'pysamloader_gui/assets'),
     ],
     hiddenimports=[],
     hookspath=[],
