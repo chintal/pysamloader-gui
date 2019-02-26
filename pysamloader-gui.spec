@@ -7,8 +7,10 @@ import PyInstaller.config
 if platform.system() == 'Windows':
     from kivy.deps import sdl2, glew
     trees = (sdl2.dep_bins + glew.dep_bins)
+    himports = ['win32timezone',]
 else:
     trees = ()
+    himports = []
 
 # Configure paths
 target = 'binary-{0}'.format(platform.system().lower())
@@ -43,7 +45,7 @@ a = Analysis(
 		('pysamloader_gui/assets/icon.png', 'pysamloader_gui/assets'),
 		('pysamloader_gui/assets/icon.ico', 'pysamloader_gui/assets'),
     ],
-    hiddenimports=[],
+    hiddenimports=himports,
     hookspath=[],
     runtime_hooks=[],
     excludes=[],
@@ -68,6 +70,6 @@ exe = EXE(
     strip=False,
     upx=True,
     runtime_tmpdir=None,
-    console=False,
+    console=True,
 	icon='pysamloader_gui/assets/icon.ico',
 )
