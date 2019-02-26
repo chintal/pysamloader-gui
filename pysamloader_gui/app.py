@@ -119,6 +119,7 @@ class FirmwareLoader(App, DropHandler):
     _tcolor = (0.1, 0.1, 0.1, 1)
 
     def __init__(self, **kwargs):
+        self._worker_thread = None
         self._root = None
         self._footer = None
         self._footer_structure = None
