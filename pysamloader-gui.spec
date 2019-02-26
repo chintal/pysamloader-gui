@@ -3,7 +3,12 @@
 import os
 import platform
 import PyInstaller.config
-from kivy.deps import sdl2, glew
+
+if platform.system() == 'Windows':
+    from kivy.deps import sdl2, glew
+    trees = *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)]
+else:
+    trees = []
 
 # Configure paths
 target = 'binary-{0}'.format(platform.system().lower())
@@ -56,7 +61,7 @@ exe = EXE(
     a.binaries,
     a.zipfiles,
     a.datas,
-    *[Tree(p) for p in (sdl2.dep_bins + glew.dep_bins)],
+    trees,
     name='pysamloader-gui',
     debug=False,
     bootloader_ignore_signals=False,
