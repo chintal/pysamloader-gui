@@ -48,6 +48,8 @@ setup(
     author="Chintalagiri Shashank",
     author_email="shashank@chintal.in",
     description="Kivy GUI for pysamloader",
+    long_description='\n'.join([read('README.rst'), read('CHANGELOG.rst')]),
+    long_description_content_type='text/x-rst',
     keywords="utilities",
     url="https://github.com/ebs-universe/pysamloader-gui",
     project_urls={

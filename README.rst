@@ -43,7 +43,7 @@ Requirements & Installation
 
 ``pysamloader-gui`` should work on any platform which supports ``python`` and
 ``kivy``. It is best tested on Linux followed by on Windows (10 and 7).
-``pysamloader-gui`` supports only python 3.4 and later, due to it's `'kivy``
+``pysamloader-gui`` supports only python 3.4 and later, due to its ``kivy``
 dependency.
 
 In general, ``pysamloader-gui`` is expected to be pip-installed. It can be safely
