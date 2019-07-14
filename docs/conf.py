@@ -344,7 +344,7 @@ latex_elements = {
 latex_documents = [(
     master_doc, 
     '{0}.tex'.format(_package_name),
-    u'{0} Documentation'.format(_package_name),
+    u'{0} Documentation'.format(_package_name.replace('_', '\\_')),
     _package_author, 'howto'),
 ]
 

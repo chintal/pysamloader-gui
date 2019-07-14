@@ -86,12 +86,6 @@ source package) as follows :
     $ cd pysamloader
     $ pip install -e .
 
-
-.. raw:: latex
-
-       \vspace*{\fill}
-
-
 Project Information
 -------------------
 
@@ -111,6 +105,11 @@ for a full list of collaborators and/or contributing authors, if any.
 ``pysamloader-gui`` is distributed under the terms of the
 `GPLv3 license <https://www.gnu.org/licenses/gpl-3.0-standalone.html>`_ .
 A copy of the text of the license is included along with the sources.
+
+.. raw:: latex
+
+       \vspace*{\fill}
+
 
 .. tabularcolumns:: >{\raggedleft\arraybackslash}\Y{0.1} >{\raggedright\arraybackslash}\Y{0.5}
 
