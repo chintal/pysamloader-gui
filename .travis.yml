@@ -4,8 +4,6 @@ dist: xenial
 sudo: false
 matrix:
   include:
-    - python: 2.7.16
-      env: TOX_ENV=py27
     - python: 3.5.7
       env: TOX_ENV=py35
     - python: 3.6.8
