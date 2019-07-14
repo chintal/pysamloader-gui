@@ -9,8 +9,38 @@ from setuptools import setup, find_packages
 # README file and 2) it's easier to type in the README file than to put a raw
 # string in below ...
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    orig_content = open(os.path.join(os.path.dirname(__file__), fname)).readlines()
+    content = ""
+    in_raw_directive = 0
+    for line in orig_content:
+        if in_raw_directive:
+            if not line.strip():
+                in_raw_directive = in_raw_directive - 1
+            continue
+        elif line.strip() == '.. raw:: latex':
+            in_raw_directive = 2
+            continue
+        content += line
+    return content
 
+
+core_dependencies = [
+    'pysamloader',
+    'cython',
+    'kivy'
+]
+
+install_requires = core_dependencies + ['wheel']
+
+setup_requires = ['setuptools_scm']
+
+doc_requires = setup_requires + ['sphinx', 'sphinx-argparse', 'sphinxcontrib-documentedlist', 'alabaster']
+
+test_requires = doc_requires + ['pytest', 'pytest-cov', 'coveralls[yaml]']
+
+build_requires = test_requires + ['doit', 'pyinstaller']
+
+publish_requires = build_requires + ['twine', 'pygithub']
 
 setup(
     name="pysamloader-gui",
@@ -18,10 +48,15 @@ setup(
     author="Chintalagiri Shashank",
     author_email="shashank@chintal.in",
     description="Kivy GUI for pysamloader",
-    license="GPLv3+",
     keywords="utilities",
-    url="https://github.com/chintal/pysamloader-gui",
-    packages=find_packages(),
+    url="https://github.com/ebs-universe/pysamloader-gui",
+    project_urls={
+        'Source Repository': 'https://github.com/ebs-universe/pysamloader-gui/',
+        'Documentation': 'https://pysamloader-gui.readthedocs.io/en/latest/index.html',
+        'Issue Tracker': 'https://github.com/ebs-universe/pysamloader-gui/issues',
+    },
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Software Development :: Embedded Systems",
@@ -32,24 +67,14 @@ setup(
         "Operating System :: OS Independent",
         "Environment :: Console"
     ],
-    install_requires=[
-        'pysamloader',
-        'cython',
-        'kivy'
-    ],
-    setup_requires=[
-        'setuptools_scm',
-    ],
+    install_requires=install_requires,
+    setup_requires=setup_requires,
     extras_require={
-        'docs': ['sphinx',
-                 'sphinx-argparse',
-                 'sphinxcontrib-documentedlist',
-                 'sphinx-rtd-theme'],
-        'build': ['doit',
-                  'setuptools_scm',
-                  'wheel',
-                  'twine',
-                  'pygithub']
+        'docs': doc_requires,
+        'tests': test_requires,
+        'build': build_requires,
+        'publish': publish_requires,
+        'dev': build_requires,
     },
     platforms='any',
     entry_points={

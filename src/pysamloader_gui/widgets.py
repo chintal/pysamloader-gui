@@ -33,7 +33,9 @@ from kivy.graphics.opengl import glGetIntegerv
 from kivy.graphics.opengl import GL_MAX_TEXTURE_SIZE
 
 _image_max_size = glGetIntegerv(GL_MAX_TEXTURE_SIZE)[0]
-asset_path = os.path.normpath(os.path.join(os.path.split(__file__)[0], 'assets'))
+asset_path = os.path.normpath(
+    os.path.join(os.path.split(__file__)[0], 'assets')
+)
 
 
 class BackgroundColorMixin(object):
@@ -119,12 +121,12 @@ class MarqueeLabel(ScrollView):
 
         self._mainlabels = []
         for t in texts:
-            l = Label(text=t, size_hint_x=None,
-                      text_size=(None, None), **self._label_params)
-            self._layout.add_widget(l)
-            l.bind(texture_size=self._set_mainlabel_width)
-            l.texture_update()
-            self._mainlabels.append(l)
+            label = Label(text=t, size_hint_x=None,
+                          text_size=(None, None), **self._label_params)
+            self._layout.add_widget(label)
+            label.bind(texture_size=self._set_mainlabel_width)
+            label.texture_update()
+            self._mainlabels.append(label)
 
         self._layout.add_widget(self._rspacer)
         self.add_widget(self._layout)
@@ -182,7 +184,7 @@ def color_set_alpha(color, alpha):
 
 
 def split_string(text, limit):
-    words = re.split('(\W)', text)
+    words = re.split(r'(\W)', text)
     if max(map(len, words)) > limit:
         raise ValueError("limit is too small")
     result = []
@@ -229,8 +231,10 @@ class OptionCard(ColorBoxLayout):
         self._icon = Image(source=_icon_source)
         self._info_label = None
         self._extended_info_icon = None
-        super(OptionCard, self).__init__(orientation='vertical', size_hint_y=0.37,
-                                         bgcolor=self._color1, padding=0, **kwargs)
+        super(OptionCard, self).__init__(
+            orientation='vertical', size_hint_y=0.37,
+            bgcolor=self._color1, padding=0, **kwargs
+        )
         self.add_widget(self._icon)
         self.add_widget(self._selector)
 

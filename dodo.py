@@ -109,8 +109,8 @@ _doc_path = os.path.join(_base_folder, 'docs', '_build', 'latex', _doc_name)
 
 def _inject_version():
     # Build version file for injection into the binary
-    with open(os.path.join(_base_folder, PACKAGE_NAME, '_version.py'), 'w') as f:
-        f.write('__version__ = "{0}"'.format(SCRIPT_VERSION))
+    with open(os.path.join(_base_folder, 'src', PACKAGE_NAME, '_version.py'), 'w') as f:
+        f.write('__version__ = "{0}"\n'.format(SCRIPT_VERSION))
 
 
 def _clean_work_folder():
@@ -127,7 +127,7 @@ def task_setup_build():
             (create_folder, [_work_folder])
         ],
         'targets': [
-            os.path.join(_base_folder, PACKAGE_NAME, '_version.py'),
+            os.path.join(_base_folder, 'src', PACKAGE_NAME, '_version.py'),
             _dist_folder,
         ],
         'clean': [_clean_work_folder, clean_targets]

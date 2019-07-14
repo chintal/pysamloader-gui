@@ -1,16 +1,16 @@
 
 import os
-os.environ['SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR'] = '0'
+os.environ['SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR'] = '0'  # noqa
 
 import hashlib
 from threading import Thread
 from functools import partial
 import kivy
-kivy.require('1.10.1')  # replace with your current kivy version !
+kivy.require('1.10.1')  # replace with your current kivy version ! # noqa
 
 from kivy.config import Config
-Config.set('graphics', 'width', '400')
-Config.set('graphics', 'height', '700')
+Config.set('graphics', 'width', '400')   # noqa
+Config.set('graphics', 'height', '700')  # noqa
 
 from kivy.core.window import Window
 from kivy.app import App
@@ -145,7 +145,8 @@ class FirmwareLoader(App, DropHandler):
         self._footer_structure.add_widget(
             Image(source=os.path.join(asset_path, 'logo-full.png')))
         self._footer_structure.add_widget(
-            Label(text='[b]pysamloader[/b]\n[size=12]v{0}[/size]'.format(__version__),
+            Label(text='[b]pysamloader[/b]\n[size=12]v{0}[/size]'
+                       ''.format(__version__),
                   halign='right', markup=True, color=self._tcolor))
         self._footer.add_widget(self._footer_structure)
         self._root.add_widget(self._footer)
@@ -197,7 +198,7 @@ class FirmwareLoader(App, DropHandler):
                     os.path.split(self._file_card.selected)[1],
                     os.path.getsize(self._file_card.selected),
                     md5sum(self._file_card.selected)
-        )
+                )
 
     def _binary_extended_info(self):
         _root = BoxLayout(orientation='vertical', padding=10, spacing=10)
@@ -308,11 +309,12 @@ class FirmwareLoader(App, DropHandler):
         try:
             self._device = get_device(self._device_card.selected)
             return True
-        except FileNotFoundError as e:
+        except FileNotFoundError:
             self.show_message_box(
                 title="Device Not Supported",
-                msg="Did not find a supported device selected. Make sure you have "
-                    "selected a valid device. If you have, check your installation."
+                msg="Did not find a supported device selected. Make sure you "
+                    "have selected a valid device. If you have, check your "
+                    "installation."
             )
             self.set_connect_button_text('Test Connection')
             return False
